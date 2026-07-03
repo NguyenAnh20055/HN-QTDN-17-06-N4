@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_nhan_vien_form" model="ir.ui.view">
+            <field name="name">nhan_vien.form</field>
+            <field name="model">nhan_vien</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <div class="oe_title" style="display:flex;align-items:center;margin-bottom:20px;">
+
+                            <field name="image_1920"
+                                widget="image"
+                                class="oe_avatar"
+                                options="{'preview_image':'image_1920'}"
+                                style="width:140px;height:140px;margin-right:25px;"/>
+
+                            <div>
+
+                                <h1 style="margin-bottom:8px;">
+                                    <field name="ho_ten" nolabel="1" readonly="1"/>
+                                </h1>
+
+                                <div style="font-size:16px;color:#666;" class="o_row">
+                                    <span><b>Mã nhân viên:</b></span>
+                                    <field name="ma_nhan_vien" readonly="1" nolabel="1"/>
+                                </div>
+
+                                <div style="margin-top:8px;">
+                               <field name="trang_thai"
+                                        widget="statusbar"
+                                        options="{'clickable': true}"
+                                        statusbar_visible="dang_lam_viec,da_nghi_viec"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <group string="Thông tin chung" col="4">
+                            <field name="ma_nhan_vien"/>
+
+                            <field name="ho_ten"/>
+
+                            <field name="gioi_tinh"/>
+
+                            <field name="ngay_sinh"/>
+
+                            <field name="tuoi" readonly="1"/>
+
+                            <field name="thang_sinh" readonly="1"/>
+
+                            <field name="que_quan"/>
+
+                            <field name="email"/>
+
+                            <field name="so_dien_thoai"/>
+
+                            <field name="phong_ban_ids"
+                                widget="many2many_tags"/>
+
+                            <field name="chung_chi_ids"/>
+
+                        </group>
+
+                        <notebook>
+
+                            <page string="Lịch sử công tác">
+
+                                <field name="lich_su_cong_tac_ids">
+
+                                    <tree editable="bottom">
+
+                                        <field name="nhan_vien_id"/>
+
+                                        <field name="phong_ban_id"/>
+
+                                        <field name="chuc_vu_id"/>
+
+                                        <field name="loai_chuc_vu"/>
+
+                                    </tree>
+
+                                </field>
+
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_nhan_vien_tree" model="ir.ui.view">
+
+            <field name="name">nhan_vien.tree</field>
+
+            <field name="model">nhan_vien</field>
+
+            <field name="arch" type="xml">
+
+                <tree>
+
+                    <field name="ma_nhan_vien"/>
+
+                    <field name="ho_ten"/>
+
+                    <field name="trang_thai"/>
+
+                    <field name="ngay_sinh"/>
+                    <field name="gioi_tinh"/>
+
+                    <field name="tuoi"/>
+
+                    <field name="que_quan"/>
+
+                    <field name="email"/>
+
+                    <field name="so_dien_thoai"/>
+
+                    <field name="phong_ban_ids" widget="many2many_tags"/>
+
+                </tree>
+
+            </field>
+
+        </record>
+
+
+        <record id="nhan_vien_search" model="ir.ui.view">
+
+            <field name="name">nhan_vien.search</field>
+
+            <field name="model">nhan_vien</field>
+
+            <field name="arch" type="xml">
+
+                <search>
+
+                    <field name="ma_nhan_vien"/>
+
+                    <field name="ho_ten"/>
+
+                    <field name="email"/>
+                    
+
+                    <field name="so_dien_thoai"/>
+
+                    <field name="que_quan"/>
+                    <field name="gioi_tinh"/>
+
+                    <field name="trang_thai"/>
+
+                    <separator/>
+
+                    <filter
+                        name="dang_lam_viec"
+                        string="Đang làm việc"
+                        domain="[('trang_thai','=','dang_lam_viec')]"/>
+
+                    <filter
+                        name="da_nghi_viec"
+                        string="Đã nghỉ việc"
+                        domain="[('trang_thai','=','da_nghi_viec')]"/>
+
+                    <separator/>
+
+                    <filter
+                        name="nam"
+                        string="Nam"
+                        domain="[('gioi_tinh','=','nam')]"/>
+
+                    <filter
+                        name="nu"
+                        string="Nữ"
+                        domain="[('gioi_tinh','=','nu')]"/>
+
+                    <filter
+                        name="khac"
+                        string="Khác"
+                        domain="[('gioi_tinh','=','khac')]"/>
+
+
+                </search>
+
+            </field>
+
+        </record>
+
+        <record id="action_nhan_vien" model="ir.actions.act_window">
+
+            <field name="name">Nhân viên</field>
+
+            <field name="res_model">nhan_vien</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="search_view_id" ref="nhan_vien_search"/>
+
+        </record>
+
+    </data>
+</odoo>

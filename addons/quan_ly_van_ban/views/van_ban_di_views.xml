@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_van_ban_di_form" model="ir.ui.view">
+            <field name="name">van_ban_di.form</field>
+            <field name="model">van_ban_di</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <header>
+                        <field name="trang_thai"
+                               widget="statusbar"
+                               options="{'clickable': '1'}"/>
+                    </header>
+
+                    <sheet>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten"/>
+                            </h1>
+                        </div>
+
+                        <group string="Thông tin chung">
+
+                            <group>
+                                <field name="ma"/>
+                                <field name="ten"/>
+                                <field name="loai_van_ban_id"/>
+                                <field name="thoi_gian"/>
+                                <field name="khach_hang_id"/>
+                            </group>
+
+                            <group>
+                                <field name="nhan_vien_phu_trach_id"/>
+                                <field name="hinh_thuc"/>
+                            </group>
+
+                        </group>
+
+                        <notebook>
+
+                            <page string="Nội dung văn bản">
+
+                                <field name="file_dinh_kem"
+                                       widget="pdf_viewer"
+                                       string="Xem nội dung"/>
+
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_van_ban_di_tree" model="ir.ui.view">
+            <field name="name">van_ban_di.tree</field>
+            <field name="model">van_ban_di</field>
+
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="ma"/>
+                    <field name="ten"/>
+                    <field name="loai_van_ban_id"/>
+                    <field name="khach_hang_id"/>
+                    <field name="nhan_vien_phu_trach_id"/>
+                    <field name="thoi_gian"/>
+                    <field name="hinh_thuc"/>
+
+                    <field name="file_dinh_kem"
+                           widget="binary"
+                           filename="ma"
+                           string="Tải file"/>
+
+                    <field name="trang_thai"
+                           widget="badge"
+                           decoration-warning="trang_thai == 'cho_gui'"
+                           decoration-success="trang_thai == 'da_gui'"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="van_ban_di_search" model="ir.ui.view">
+            <field name="model">van_ban_di</field>
+
+            <field name="arch" type="xml">
+                <search>
+
+                    <field name="ma"/>
+                    <field name="ten"/>
+                    <field name="loai_van_ban_id"/>
+                    <field name="khach_hang_id"/>
+                    <field name="nhan_vien_phu_trach_id"/>
+                    <field name="hinh_thuc"/>
+                    <field name="trang_thai"/>
+
+                    <group expand="0" string="Gom nhóm theo">
+
+                        <filter string="Loại văn bản"
+                                name="group_loai_van_ban"
+                                context="{'group_by':'loai_van_ban_id'}"/>
+
+                        <filter string="Khách hàng"
+                                name="group_customer"
+                                context="{'group_by':'khach_hang_id'}"/>
+
+                        <filter string="Nhân viên phụ trách"
+                                name="group_employee"
+                                context="{'group_by':'nhan_vien_phu_trach_id'}"/>
+
+                        <filter string="Trạng thái"
+                                name="group_status"
+                                context="{'group_by':'trang_thai'}"/>
+
+                        <filter string="Hình thức"
+                                name="group_type"
+                                context="{'group_by':'hinh_thuc'}"/>
+
+                    </group>
+
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_van_ban_di" model="ir.actions.act_window">
+            <field name="name">Văn bản đi</field>
+            <field name="res_model">van_ban_di</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

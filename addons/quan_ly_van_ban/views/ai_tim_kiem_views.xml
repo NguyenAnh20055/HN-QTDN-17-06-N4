@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- FORM VIEW -->
+        <record id="view_ai_tim_kiem_form" model="ir.ui.view">
+            <field name="name">ai.tim.kiem.form</field>
+            <field name="model">ai_tim_kiem</field>
+            <field name="arch" type="xml">
+                <form string="AI tìm kiếm văn bản">
+                    <sheet>
+                        <group>
+                            <field name="cau_hoi"
+                                   placeholder="Nhập câu hỏi để tìm văn bản..."/>
+                        </group>
+
+                        <group>
+                            <field name="ket_qua"
+                                   widget="html"
+                                   readonly="1"
+                                   nolabel="1"/>
+                        </group>
+
+                        <footer>
+                            <button name="action_hoi_ai"
+                                    string="Hỏi AI"
+                                    type="object"
+                                    class="btn-primary"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="action_ai_tim_kiem" model="ir.actions.act_window">
+            <field name="name">AI tìm kiếm văn bản</field>
+            <field name="res_model">ai_tim_kiem</field>
+            <field name="view_mode">form</field>
+        </record>
+
+    </data>
+</odoo>

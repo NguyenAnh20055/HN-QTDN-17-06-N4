@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khach_hang_tiem_nang_form" model="ir.ui.view">
+            <field name="name">khach_hang_tiem_nang.form</field>
+            <field name="model">khach_hang_tiem_nang</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="giai_doan" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="ten_cong_ty" class="oe_edit_only" string="Tên công ty/Cá nhân"/>
+                            <h1><field name="ten_cong_ty" placeholder="Ví dụ: Công ty ABC"/></h1>
+                        </div>
+                        
+                        <group string="Thông tin khách hàng">
+                            <group>
+                                <field name="khach_hang_id" options="{'no_create': False, 'no_open': False}"/>
+                                <field name="doanh_thu_tiem_nang"/>
+                            </group>
+                            <group>
+                                <field name="ngay_du_kien_ky_hop_dong"/>
+                                <field name="ngay_tao"/>
+                                <field name="ngay_cap_nhat"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Hoạt động" name="hoat_dong">
+                                <field name="hoat_dong_ids"/>
+                            </page>
+
+                            </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_khach_hang_tiem_nang_tree" model="ir.ui.view">
+            <field name="name">khach_hang_tiem_nang.tree</field>
+            <field name="model">khach_hang_tiem_nang</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="giai_doan == '4'" decoration-success="giai_doan == '3'" decoration-info="giai_doan == '2'">
+                    <field name="ten_cong_ty"/>
+                    <field name="khach_hang_id"/>
+                    <field name="doanh_thu_tiem_nang"/>
+                    <field name="ngay_du_kien_ky_hop_dong"/>
+                    <field name="giai_doan" widget="badge"
+                        decoration-danger="giai_doan == 'that_bai'"
+                        decoration-success="giai_doan == 'ky_hop_dong'"
+                        decoration-info="giai_doan == 'dam_phan'"/>
+                                        </tree>
+            </field>
+        </record>
+        <!-- GRAPH -->
+        <record id="view_khach_hang_tiem_nang_graph" model="ir.ui.view">
+            <field name="name">khach_hang_tiem_nang.graph</field>
+            <field name="model">khach_hang_tiem_nang</field>
+
+            <field name="arch" type="xml">
+                <graph string="Khách hàng tiềm năng theo giai đoạn" type="bar">
+                    <field name="giai_doan" type="row"/>
+                    <field name="doanh_thu_tiem_nang" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- PIVOT -->
+        <record id="view_khach_hang_tiem_nang_pivot" model="ir.ui.view">
+            <field name="name">khach_hang_tiem_nang.pivot</field>
+            <field name="model">khach_hang_tiem_nang</field>
+
+            <field name="arch" type="xml">
+                <pivot string="Phân tích khách hàng tiềm năng">
+                    <field name="giai_doan" type="row"/>
+                    <field name="doanh_thu_tiem_nang" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        <record id="action_khach_hang_tiem_nang" model="ir.actions.act_window">
+            <field name="name">Khách hàng tiềm năng</field>
+            <field name="res_model">khach_hang_tiem_nang</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+        </record>
+    </data>
+</odoo>

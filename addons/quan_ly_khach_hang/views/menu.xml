@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- MENU GỐC -->
+        <menuitem id="menu_root"
+                  name="QLKH"
+                  sequence="10"/>
+
+        <!-- DASHBOARD -->
+        <menuitem id="menu_dashboard_khach_hang"
+                  name="Dashboard"
+                  parent="menu_root"
+                  action="action_dashboard_khach_hang"
+                  sequence="1"/>
+
+        <!-- QUẢN LÝ KHÁCH HÀNG -->
+        <menuitem id="menu_khach_hang"
+                  name="Quản lý khách hàng"
+                  parent="menu_root"
+                  action="action_khach_hang"
+                  sequence="10"/>
+
+        <!-- PHÂN CÔNG -->
+        <menuitem id="menu_phan_cong_cong_viec"
+                  name="Phân công"
+                  parent="menu_root"
+                  action="action_phan_cong_cong_viec"
+                  sequence="20"/>
+
+        <!-- CÔNG CỤ -->
+        <menuitem id="menu_danh_muc"
+                  name="Công cụ"
+                  parent="menu_root"
+                  sequence="30"/>
+
+        <menuitem id="menu_ho_tro_khach_hang"
+                  name="Phiếu hỗ trợ"
+                  parent="menu_danh_muc"
+                  action="action_ho_tro_khach_hang"
+                  sequence="1"/>
+
+        <menuitem id="menu_khach_hang_tiem_nang"
+                  name="Khách hàng tiềm năng"
+                  parent="menu_danh_muc"
+                  action="action_khach_hang_tiem_nang"
+                  sequence="2"/>
+
+        <menuitem id="menu_hoat_dong"
+                  name="Hoạt động"
+                  parent="menu_danh_muc"
+                  action="action_hoat_dong"
+                  sequence="3"/>
+
+        <menuitem id="menu_danh_gia_nhan_vien"
+                  name="Đánh giá nhân viên"
+                  parent="menu_danh_muc"
+                  action="action_danh_gia_nhan_vien"
+                  sequence="4"/>
+
+    </data>
+</odoo>

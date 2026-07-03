@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- TREE -->
+        <record id="view_khach_hang_tree" model="ir.ui.view">
+            <field name="name">khach_hang.tree</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách Khách hàng">
+                    <field name="full_name"/>
+                    <field name="birthday"/>
+                    <field name="nhan_vien_id"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM -->
+        <record id="view_khach_hang_form" model="ir.ui.view">
+            <field name="name">khach_hang.form</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <form string="Thông tin Khách hàng">
+                    <sheet>
+
+                        <div class="oe_title">
+                            <label for="full_name"
+                                   class="oe_edit_only"
+                                   string="Họ và tên khách hàng"/>
+                            <h1>
+                                <field name="full_name"
+                                       placeholder="Ví dụ: Nguyễn Văn A..."/>
+                            </h1>
+                        </div>
+
+                        <group>
+
+                            <group string="Thông tin cá nhân">
+                                <field name="birthday"/>
+                                <field name="nhan_vien_id"/>
+                            </group>
+
+                            <group string="Liên hệ">
+                                <field name="email" widget="email"/>
+                                <field name="phone" widget="phone"/>
+                                <field name="address"/>
+                            </group>
+
+                        </group>
+
+                        <notebook>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- GRAPH -->
+        <record id="view_khach_hang_graph" model="ir.ui.view">
+            <field name="name">khach_hang.graph</field>
+            <field name="model">khach_hang</field>
+
+            <field name="arch" type="xml">
+                <graph string="Khách hàng theo nhân viên phụ trách" type="bar">
+
+                    <field name="nhan_vien_id"/>
+
+                    <field name="id" type="measure"/>
+
+                </graph>
+            </field>
+        </record>
+
+        <!-- PIVOT -->
+        <record id="view_khach_hang_pivot" model="ir.ui.view">
+            <field name="name">khach_hang.pivot</field>
+            <field name="model">khach_hang</field>
+
+            <field name="arch" type="xml">
+                <pivot string="Phân tích khách hàng">
+                    <field name="id" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="action_khach_hang" model="ir.actions.act_window">
+            <field name="name">Khách hàng</field>
+            <field name="res_model">khach_hang</field>
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+    </data>
+</odoo>

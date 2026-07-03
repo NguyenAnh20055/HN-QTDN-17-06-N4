@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+        <!-- DASHBOARD ACTION -->
+        <record id="action_dashboard_nhan_su" model="ir.actions.act_window">
+            <field name="name">Dashboard Nhân Sự</field>
+            <field name="res_model">nhan_vien</field>
+            <field name="view_mode">graph,tree</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- GRAPH VIEW: TRẠNG THÁI NHÂN VIÊN -->
+        <record id="view_nhan_su_graph" model="ir.ui.view">
+            <field name="name">nhan_vien.graph</field>
+            <field name="model">nhan_vien</field>
+            <field name="arch" type="xml">
+                <graph string="Biểu đồ trạng thái nhân viên" type="pie">
+                    
+                    <!-- nhóm theo trạng thái -->
+                    <field name="trang_thai" type="row"/>
+
+                </graph>
+            </field>
+        </record>
+
+        <!-- TREE VIEW (đi kèm để có dữ liệu) -->
+        <record id="view_nhan_su_tree" model="ir.ui.view">
+            <field name="name">nhan_vien.tree</field>
+            <field name="model">nhan_vien</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_nhan_vien"/>
+                    <field name="ho_ten"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

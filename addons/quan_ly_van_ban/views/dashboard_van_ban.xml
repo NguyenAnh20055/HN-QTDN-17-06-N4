@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_dashboard_van_ban_form"
+            model="ir.ui.view">
+
+        <field name="name">dashboard.van.ban.form</field>
+        <field name="model">dashboard.van.ban</field>
+
+        <field name="arch" type="xml">
+
+            <form create="false"
+                  edit="false">
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>📊 Dashboard Quản Lý Văn Bản</h1>
+                    </div>
+
+                    <group col="4">
+
+                        <group>
+                            <div class="alert alert-primary text-center">
+                                <h2>
+                                    <field name="tong_van_ban" nolabel="1" readonly="1"/>
+                                </h2>
+                                <div>Tổng văn bản</div>
+                            </div>
+                        </group>
+
+                        <group>
+                            <div class="alert alert-success text-center">
+                                <h2>
+                                    <field name="tong_van_ban_den" nolabel="1" readonly="1"/>
+                                </h2>
+                                <div>Văn bản đến</div>
+                            </div>
+                        </group>
+
+                        <group>
+                            <div class="alert alert-warning text-center">
+                                <h2>
+                                    <field name="tong_van_ban_di" nolabel="1" readonly="1"/>
+                                </h2>
+                                <div>Văn bản đi</div>
+                            </div>
+                        </group>
+
+                        <group>
+                            <div class="alert alert-danger text-center">
+                                <h2>
+                                    <field name="tong_van_ban_noi_bo" nolabel="1" readonly="1"/>
+                                </h2>
+                                <div>Văn bản nội bộ</div>
+                            </div>
+                        </group>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <record id="action_dashboard_van_ban"
+            model="ir.actions.act_window">
+
+        <field name="name">Dashboard</field>
+        <field name="res_model">dashboard.van.ban</field>
+        <field name="res_id" ref="dashboard_van_ban_main"/>
+        <field name="view_mode">form</field>
+    </record>
+    
+    <record id="view_danh_sach_van_ban_graph"
+        model="ir.ui.view">
+
+        <field name="name">danh.sach.van.ban.graph</field>
+        <field name="model">danh_sach_van_ban</field>
+
+        <field name="arch" type="xml">
+
+            <graph string="Thống kê văn bản" type="pie">
+
+                <field name="loai_xu_ly"/>
+
+            </graph>
+
+        </field>
+
+    </record>
+
+    <record id="view_danh_sach_van_ban_pivot"
+        model="ir.ui.view">
+
+        <field name="name">danh.sach.van.ban.pivot</field>
+        <field name="model">danh_sach_van_ban</field>
+        <field name="arch" type="xml">
+
+            <pivot string="Phân tích văn bản">
+
+                <field name="loai_xu_ly"
+                    type="row"/>
+
+                <field name="id"
+                    type="measure"/>
+
+            </pivot>
+
+        </field>
+
+    </record>
+    <record id="action_dashboard_van_ban"
+        model="ir.actions.act_window">
+
+        <field name="name">Dashboard Văn Bản</field>
+        <field name="res_model">danh_sach_van_ban</field>
+        <field name="view_mode">graph,pivot,tree</field>
+
+    </record>
+
+</odoo>

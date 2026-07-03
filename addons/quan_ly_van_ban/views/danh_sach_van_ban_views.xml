@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- FORM -->
+
+        <record id="view_danh_sach_van_ban_form" model="ir.ui.view">
+            <field name="name">danh_sach_van_ban.form</field>
+            <field name="model">danh_sach_van_ban</field>
+
+            <field name="arch" type="xml">
+
+                <form create="false" edit="false">
+
+                    <sheet>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten"/>
+                            </h1>
+                        </div>
+
+                        <group>
+
+                            <group>
+
+                                <field name="ma"/>
+
+                                <field name="loai_xu_ly"/>
+
+                                <field name="loai_van_ban_id"/>
+
+                                <field name="khach_hang_id"/>
+
+                            </group>
+
+                            <group>
+
+                                <field name="nhan_vien_phu_trach_id"/>
+
+                                <field name="thoi_gian"/>
+
+                                <field name="trang_thai"/>
+
+                            </group>
+
+                        </group>
+
+                    </sheet>
+
+                </form>
+
+            </field>
+
+        </record>
+
+
+        <!-- TREE -->
+
+        <record id="view_danh_sach_van_ban_tree"
+                model="ir.ui.view">
+
+            <field name="name">danh_sach_van_ban.tree</field>
+
+            <field name="model">danh_sach_van_ban</field>
+
+            <field name="arch" type="xml">
+
+                <tree create="false">
+
+                    <field name="ma"/>
+
+                    <field name="ten"/>
+
+                    <field name="loai_xu_ly"/>
+
+                    <field name="khach_hang_id"/>
+
+                    <field name="loai_van_ban_id"/>
+
+                    <field name="nhan_vien_phu_trach_id"/>
+
+                    <field name="thoi_gian"/>
+
+                    <field name="trang_thai"/>
+                    
+
+                </tree>
+
+            </field>
+
+        </record>
+
+
+        <!-- ACTION -->
+
+        <record id="action_danh_sach_van_ban"
+                model="ir.actions.act_window">
+
+            <field name="name">Danh sách văn bản</field>
+
+            <field name="res_model">danh_sach_van_ban</field>
+
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+    </data>
+
+</odoo>

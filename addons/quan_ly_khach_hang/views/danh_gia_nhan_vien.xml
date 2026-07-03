@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_danh_gia_nhan_vien_form" model="ir.ui.view">
+            <field name="name">danh_gia_nhan_vien</field>
+            <field name="model">danh_gia_nhan_vien</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Thông tin đánh giá">
+                            <field name="khach_hang_id"/>
+                            <field name="nhan_vien_id"/>
+                            <field name="diem_danh_gia"/>
+                            <field name="thoi_gian_danh_gia"/>
+                            <field name="trang_thai"/>
+                        </group>
+
+                        <group string="Nhận xét">
+                            <field name="nhan_xet" placeholder="Nhập nhận xét của khách hàng..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_danh_gia_nhan_vien_tree" model="ir.ui.view">
+            <field name="name">danh_gia_nhan_vien</field>
+            <field name="model">danh_gia_nhan_vien</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="khach_hang_id"/>
+                    <field name="nhan_vien_id"/>
+                    <field name="diem_danh_gia"/>
+                    <field name="nhan_xet"/>
+                    <field name="thoi_gian_danh_gia"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="danh_gia_nhan_vien_search">
+            <field name="model">danh_gia_nhan_vien</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="khach_hang_id"/>
+                     <field name="nhan_vien_id"/>
+                     <field name="diem_danh_gia"/>
+                     <field name="thoi_gian_danh_gia"/>
+                     <field name="trang_thai"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_danh_gia_nhan_vien" model="ir.actions.act_window">
+            <field name="name">Đánh giá nhân viên</field>
+            <field name="res_model">danh_gia_nhan_vien</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref = "danh_gia_nhan_vien_search"/>
+        </record>
+    </data>
+</odoo>
+

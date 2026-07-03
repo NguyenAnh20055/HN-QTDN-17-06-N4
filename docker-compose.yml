@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    platform: linux/amd64
+    container_name: postgres_odoo-base
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:15
+    platform: linux/amd64
+    container_name: odoo_odoo-base
+    depends_on:
+      - postgres
+    ports:
+      - "8069:8069"
+    volumes:
+      # ⚠️ CHỈ mount addons, KHÔNG mount cả project
+      - ./addons:/mnt/extra-addons
+      - odoo_data:/var/lib/odoo
+    environment:
+      HOST: postgres
+      USER: odoo
+      PASSWORD: odoo
+
+volumes:
+  postgres_data:
+  odoo_data:
+

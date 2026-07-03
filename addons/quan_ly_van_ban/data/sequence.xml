@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="seq_van_ban" model="ir.sequence">
+        <field name="name">Mã văn bản</field>
+        <field name="code">quan_ly_van_ban.sequence</field>
+
+        <field name="prefix">VB</field>
+
+        <field name="padding">3</field>
+
+        <field name="number_next">1</field>
+
+        <field name="number_increment">1</field>
+
+    </record>
+
+</odoo>
