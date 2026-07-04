@@ -19,10 +19,6 @@
 
 </div>
 
-## 📖 Poster
-<p align="center">
-  <img src="setup/Poster-HN-QTDN-17-06-N4.png">
-</p> 
 
 ## 🔧Các công nghệ được sử dụng
 <div align="center">
@@ -37,6 +33,11 @@
 ### Cơ sở dữ liệu
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 </div>
+
+## 📖 Poster
+<p align="center">
+  <img src="setup/Poster-HN-QTDN-17-06-N4.png">
+</p> 
 
 ## 1. Giới thiệu
 | Module | Mô Tả | Phụ Thuộc | Ghi chú/Tác giả |
