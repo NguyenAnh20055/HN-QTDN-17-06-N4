@@ -1,10 +1,10 @@
 <h2 align="center">
     <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
-    🎓 Faculty of Information Technology (DaiNam University)
+    🎓 Khoa Công nghệ Thông tin (Đại học Đại Nam)
     </a>
 </h2>
 <h2 align="center">
-    PLATFORM ERP
+    HỆ THỐNG QUẢN LÝ VĂN BẢN – KHÁCH HÀNG
 </h2>
 <div align="center">
     <p align="center">
